@@ -1,0 +1,756 @@
+```html
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Clínica Oftalmológica Dr Pinedo en Iquitos. Medida de vista, despistaje de glaucoma, ojo seco, pterigión, chalazión, cataratas y más. Agenda por WhatsApp." />
+  <title>Clínica Oftalmológica Dr Pinedo | Iquitos</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111b31;
+      --muted:#a8b3cf;
+      --text:#eaf0ff;
+      --primary:#3aa6ff;
+      --primary2:#6ee7ff;
+      --accent:#22c55e;
+      --danger:#ef4444;
+      --stroke:rgba(255,255,255,.10);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 28px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(58,166,255,.28), transparent 60%),
+                  radial-gradient(900px 600px at 80% 0%, rgba(110,231,255,.18), transparent 55%),
+                  radial-gradient(1000px 700px at 80% 90%, rgba(34,197,94,.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.5;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(100% - 36px, var(--max)); margin:0 auto; }
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.55);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:42px; height:42px; border-radius:14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary2));
+      display:grid; place-items:center;
+      box-shadow: 0 10px 22px rgba(58,166,255,.25);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .logo svg{ width:24px; height:24px; }
+    .brand h1{ font-size: 14px; margin:0; letter-spacing:.2px; }
+    .brand p{ margin:0; font-size:12px; color:var(--muted); }
+
+    .nav{ display:flex; gap:18px; align-items:center; }
+    .nav a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:12px;
+      transition:.2s ease;
+    }
+    .nav a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      font-weight: 700;
+      font-size: 14px;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.20); }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(58,166,255,.95), rgba(110,231,255,.75));
+      border: 1px solid rgba(255,255,255,.18);
+      color:#06101f;
+      box-shadow: 0 14px 28px rgba(58,166,255,.18);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); }
+    .btn-whatsapp{
+      background: linear-gradient(135deg, rgba(34,197,94,.92), rgba(16,185,129,.72));
+      color:#04110a;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 28px rgba(34,197,94,.14);
+    }
+
+    /* Hero */
+    .hero{ padding: 64px 0 26px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .95fr;
+      gap: 24px;
+      align-items:stretch;
+    }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12px;
+      width: fit-content;
+    }
+    .badge span.dot{
+      width:8px; height:8px; border-radius:999px; background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(34,197,94,.12);
+    }
+    .hero h2{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.6px;
+    }
+    .hero p{ margin:0; color: var(--muted); font-size: 16px; max-width: 58ch; }
+    .hero-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; }
+    .mini{ display:flex; gap:14px; flex-wrap:wrap; margin-top: 18px; }
+    .mini .pill{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,27,49,.65);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill b{ color: var(--text); font-weight:800; }
+
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(17,27,49,.78), rgba(17,27,49,.55));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card{
+      padding: 18px;
+      position:relative;
+      min-height: 370px;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:260px; height:260px;
+      background: radial-gradient(circle at 30% 30%, rgba(110,231,255,.35), transparent 65%);
+      transform: rotate(10deg);
+    }
+    .hero-card h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: .2px; }
+    .hero-card p{ margin:0 0 14px; color: var(--muted); font-size: 13px; }
+
+    .form{ display:grid; gap:10px; position:relative; }
+    .input{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    .input::placeholder{ color: rgba(168,179,207,.7); }
+    .row{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+    .hint{ font-size: 12px; color: rgba(168,179,207,.9); margin-top: 6px; }
+    .success, .error{
+      display:none;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .success{ background: rgba(34,197,94,.12); color: #bbf7d0; }
+    .error{ background: rgba(239,68,68,.12); color: #fecaca; }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 16px; margin-bottom: 16px;
+    }
+    .section-title h3{ margin:0; font-size: 22px; letter-spacing: -0.3px; }
+    .section-title p{ margin:0; color: var(--muted); font-size: 13px; max-width: 68ch; }
+
+    .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .grid-2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+    .feature{
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,27,49,.55);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      min-height: 146px;
+    }
+    .feature .icon{
+      width:42px; height:42px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(58,166,255,.14);
+      border: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 10px;
+    }
+    .feature h4{ margin: 0 0 6px; font-size: 15px; }
+    .feature p{ margin:0; color: var(--muted); font-size: 13px; }
+
+    .services{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    .list{ padding: 16px; }
+    .list ul{ margin:0; padding:0; list-style:none; display:grid; gap:10px; }
+    .li{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+    }
+    .check{
+      width:22px; height:22px; border-radius: 10px;
+      background: rgba(34,197,94,.16);
+      border: 1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      margin-top:1px;
+    }
+    .li b{ display:block; font-size: 14px; margin-bottom:2px; }
+    .li span{ display:block; color: var(--muted); font-size: 13px; }
+
+    .side{ padding: 16px; display:grid; gap: 12px; }
+    .side .stat{
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.14);
+    }
+    .stat .k{ font-size: 22px; font-weight: 900; letter-spacing: -0.4px; }
+    .stat .d{ color: var(--muted); font-size: 13px; margin-top:2px; }
+
+    .quote{ padding: 16px; }
+    .quote p{ margin:0 0 10px; color: var(--text); font-size: 14px; }
+    .quote .who{ color: var(--muted); font-size: 13px; }
+
+    /* FAQ */
+    .faq{ display:grid; gap:10px; }
+    details{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(17,27,49,.55);
+      padding: 12px 14px;
+    }
+    summary{ cursor:pointer; font-weight: 800; outline:none; }
+    details p{ color: var(--muted); margin:10px 0 0; font-size: 13px; }
+
+    /* Footer / CTA */
+    .cta{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(58,166,255,.18), rgba(34,197,94,.10));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cta h3{ margin:0; font-size: 18px; }
+    .cta p{ margin:4px 0 0; color: var(--muted); font-size: 13px; max-width: 70ch; }
+
+    footer{ padding: 24px 0 40px; color: rgba(168,179,207,.9); font-size: 12px; }
+    .footer-grid{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+      border-top:1px solid rgba(255,255,255,.10);
+      padding-top: 16px;
+    }
+    .small-links{ display:flex; gap:12px; flex-wrap:wrap; }
+    .small-links a{ color: rgba(168,179,207,.9); }
+    .small-links a:hover{ color: var(--text); }
+
+    /* Floating WhatsApp */
+    .fab{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .services{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .nav{ display:none; }
+      .row{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M2.2 12s3.6-7 9.8-7 9.8 7 9.8 7-3.6 7-9.8 7S2.2 12 2.2 12Z" stroke="white" stroke-width="1.6" opacity="0.9"/>
+            <path d="M12 15.3a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6Z" stroke="white" stroke-width="1.6" opacity="0.9"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Clínica Oftalmológica Dr Pinedo</h1>
+          <p>Iquitos, Loreto • 8:00 a.m. – 8:00 p.m.</p>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#cita">Agendar cita</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span> Atención en Iquitos • Horario 8 a.m. a 8 p.m.</div>
+        <h2>Cuida tu visión con una evaluación completa y explicada “sin vueltas”</h2>
+        <p>
+          En la <b>Clínica Oftalmológica Dr Pinedo</b> te atendemos para lo más común del día a día:
+          <b>medida de vista</b>, <b>despistaje de glaucoma</b>, <b>ojo seco</b>, procedimientos rápidos y cirugías según evaluación.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-whatsapp" id="waTop" href="#" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20.3 3.7A11 11 0 0 0 3.9 19.5L3 22l2.6-.8A11 11 0 1 0 20.3 3.7Z" stroke="currentColor" stroke-width="1.6" opacity="0.9"/>
+              <path d="M8.8 7.8c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.4-.2.2-.9.9-.9 2.2 0 1.3.9 2.6 1 2.8.1.2 1.8 2.9 4.5 3.9 2.2.9 2.7.7 3.2.6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.3 0-.1-.2-.2-.4-.3l-1.5-.8c-.2-.1-.4-.1-.6.2-.2.2-.6.8-.7 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.2-.2.2-.4.1-.2 0-.3 0-.5l-.6-1.5Z" fill="currentColor" opacity="0.9"/>
+            </svg>
+            Agendar cita (WhatsApp)
+          </a>
+          <a class="btn" href="#servicios">Ver servicios</a>
+        </div>
+
+        <div class="mini" aria-label="Ventajas rápidas">
+          <div class="pill"><b>Diagnóstico claro</b> • Te explicamos todo</div>
+          <div class="pill"><b>Seguimiento</b> • Control y plan</div>
+          <div class="pill"><b>Horario amplio</b> • 8 a.m. – 8 p.m.</div>
+        </div>
+      </div>
+
+      <!-- Card form -->
+      <div class="card hero-card" id="cita">
+        <h3>Agendar cita</h3>
+        <p>Completa tus datos y abrimos WhatsApp con el mensaje listo.</p>
+
+        <div class="success" id="successBox">¡Listo! Abriendo WhatsApp…</div>
+        <div class="error" id="errorBox">Revisa los campos e inténtalo de nuevo.</div>
+
+        <form class="form" id="leadForm" autocomplete="on">
+          <div class="row">
+            <input class="input" name="nombre" placeholder="Nombre y apellido" required />
+            <input class="input" name="telefono" placeholder="Teléfono (opcional)" />
+          </div>
+          <input class="input" name="motivo" placeholder="Motivo: medida de vista, glaucoma, ojo seco..." required />
+          <div class="row">
+            <input class="input" name="fecha" type="date" />
+            <input class="input" name="hora" type="time" />
+          </div>
+          <button class="btn btn-primary" type="submit">Agendar cita por WhatsApp</button>
+          <div class="hint">Horario de atención: 8:00 a.m. a 8:00 p.m.</div>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h3>Servicios</h3>
+          <p>Atenciones de rutina, procedimientos rápidos, cirugías y venta directa (óptica/farmacia).</p>
+        </div>
+        <a class="btn" href="#cita">Agendar cita</a>
+      </div>
+
+      <div class="services">
+        <div class="card list">
+          <ul>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Medida de vista computarizada</b>
+                <span>Receta de lentes para miopía, astigmatismo y presbicia.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Despistaje de glaucoma</b>
+                <span>Toma de presión ocular y revisión del nervio óptico.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Examen de ojo seco</b>
+                <span>Pruebas de lagrimeo y calidad de la lágrima (común por pantallas).</span>
+              </div>
+            </li>
+
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Limpieza de lente intraocular (YAG Láser)</b>
+                <span>Para pacientes operados de catarata que vuelven a ver borroso.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Tratamiento de “carnosidad” (Pterigión)</b>
+                <span>Cirugía ambulatoria con anestesia local.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Extracción de chalazión</b>
+                <span>Cirugía menor para eliminar el bultito del párpado.</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Lavado de vía lagrimal</b>
+                <span>Para pacientes que lagrimean todo el tiempo.</span>
+              </div>
+            </li>
+
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Operación de cataratas</b>
+                <span>Cirugía frecuente y de gran impacto visual (según evaluación).</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Cirugía láser para dejar de usar lentes</b>
+                <span>Muy buscada por jóvenes y adultos jóvenes (según evaluación).</span>
+              </div>
+            </li>
+
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Óptica</b>
+                <span>Venta de monturas y cristales (ideal tras la evaluación).</span>
+              </div>
+            </li>
+            <li class="li">
+              <div class="check" aria-hidden="true">✓</div>
+              <div>
+                <b>Farmacia (gotas)</b>
+                <span>Lubricantes, antibióticos y antiinflamatorios (según indicación médica).</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card side">
+          <div class="stat">
+            <div class="k">8 a.m.–8 p.m.</div>
+            <div class="d">Horario amplio para agendar con facilidad.</div>
+          </div>
+          <div class="stat">
+            <div class="k">Iquitos</div>
+            <div class="d">Calle Sgto Lores 779.</div>
+          </div>
+          <div class="stat">
+            <div class="k">WhatsApp</div>
+            <div class="d">Agenda rápida con mensaje automático.</div>
+          </div>
+          <a class="btn btn-whatsapp" id="waMid" href="#" target="_blank" rel="noopener">Agendar cita</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficios -->
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h3>¿Por qué atenderte aquí?</h3>
+          <p>Una experiencia pensada para que salgas con tranquilidad y un plan claro.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature">
+          <div class="icon" aria-hidden="true">👁️</div>
+          <h4>Evaluación completa</h4>
+          <p>Revisión clínica con recomendaciones personalizadas según tu caso.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🧠</div>
+          <h4>Explicación simple</h4>
+          <p>Te explicamos el diagnóstico “con manzanitas” y los pasos a seguir.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">✅</div>
+          <h4>Plan y seguimiento</h4>
+          <p>Indicaciones prácticas, controles y orientación constante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h3>Testimonios</h3>
+          <p>Ejemplos (reemplázalos por reseñas reales cuando las tengas).</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card quote">
+          <p>“Me atendieron rápido y me explicaron clarísimo. Salí con mi receta lista.”</p>
+          <div class="who">— Paciente, medida de vista</div>
+        </div>
+        <div class="card quote">
+          <p>“Tenía molestias por pantallas. Con el plan para ojo seco, mejoré bastante.”</p>
+          <div class="who">— Paciente, ojo seco</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <section id="ubicacion">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h3>Ubicación y contacto</h3>
+          <p>Encuéntranos en Iquitos. Puedes abrir el mapa y llegar en 1 toque.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="padding:16px;">
+          <h4 style="margin:0 0 8px;">Dirección</h4>
+          <p style="margin:0; color: var(--muted); font-size:13px;">
+            Calle Sgto Lores 779, Iquitos, Loreto • Perú
+          </p>
+
+          <div style="height:10px;"></div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=-3.763736,-73.254049" target="_blank" rel="noopener">
+              Cómo llegar
+            </a>
+            <a class="btn btn-whatsapp" id="waBottom" href="#" target="_blank" rel="noopener">Agendar cita</a>
+          </div>
+
+          <div style="height:12px;"></div>
+
+          <h4 style="margin:0 0 8px;">Horario</h4>
+          <p style="margin:0; color: var(--muted); font-size:13px;">
+            Todos los días: 8:00 a.m. a 8:00 p.m.
+          </p>
+        </div>
+
+        <div class="card" style="padding:16px;">
+          <h4 style="margin:0 0 8px;">Mapa</h4>
+          <p style="margin:0 0 10px; color: var(--muted); font-size:13px;">
+            Ubicación exacta de la Clínica Oftalmológica Dr Pinedo.
+          </p>
+
+          <div style="border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.12);">
+            <iframe
+              title="Mapa Clínica Oftalmológica Dr Pinedo"
+              src="https://www.google.com/maps?q=-3.763736,-73.254049&z=17&output=embed"
+              width="100%"
+              height="240"
+              style="border:0; filter: grayscale(20%) contrast(105%);"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h3>Preguntas frecuentes</h3>
+          <p>Respuestas rápidas para que el paciente reserve sin dudas.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>¿Qué incluye la medida de vista?</summary>
+          <p>Evaluación de agudeza visual y refracción para receta de lentes. La recomendación final depende del examen clínico.</p>
+        </details>
+        <details>
+          <summary>¿Por qué es importante el despistaje de glaucoma?</summary>
+          <p>Porque puede avanzar sin dolor. Controlar presión ocular y nervio óptico ayuda a detectarlo a tiempo.</p>
+        </details>
+        <details>
+          <summary>¿El ojo seco tiene tratamiento?</summary>
+          <p>Sí. Se evalúa la lágrima y se indica un plan (gotas, higiene, hábitos). El resultado mejora con constancia.</p>
+        </details>
+        <details>
+          <summary>¿Atienden pterigión o chalazión?</summary>
+          <p>Sí, según evaluación. Te indicamos si es ambulatorio y los cuidados posteriores.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h3>Agendar cita hoy</h3>
+          <p>Escríbenos por WhatsApp y te confirmamos disponibilidad. Atención de 8:00 a.m. a 8:00 p.m.</p>
+        </div>
+        <a class="btn btn-whatsapp" id="waCta" href="#" target="_blank" rel="noopener">Agendar cita</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>© <span id="year"></span> Clínica Oftalmológica Dr Pinedo • Iquitos</div>
+      <div class="small-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#ubicacion">Ubicación</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <div class="fab">
+    <a class="btn btn-whatsapp" id="waFab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+      Agendar cita
+    </a>
+  </div>
+
+  <script>
+    // ======= CONFIGURADO PARA TI =======
+    const WHATSAPP_NUMBER = "51955459140"; // +51 955 459 140 (sin + ni espacios)
+    const CLINIC_NAME = "Clínica Oftalmológica Dr Pinedo";
+    const ADDRESS = "Calle Sgto Lores 779, Iquitos";
+    const HOURS = "8:00 a.m. a 8:00 p.m.";
+
+    function buildMessage(data){
+      const parts = [
+        `Hola, quiero agendar una cita en ${CLINIC_NAME}.`,
+        `Dirección: ${ADDRESS}.`,
+        `Horario: ${HOURS}.`,
+        data.nombre ? `Nombre: ${data.nombre}` : "",
+        data.telefono ? `Teléfono: ${data.telefono}` : "",
+        data.motivo ? `Motivo: ${data.motivo}` : "",
+        data.fecha ? `Fecha preferida: ${data.fecha}` : "",
+        data.hora ? `Hora preferida: ${data.hora}` : ""
+      ].filter(Boolean);
+
+      return parts.join("\n");
+    }
+
+    function waLink(message){
+      const encoded = encodeURIComponent(message);
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+    }
+
+    // Set year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Setup WhatsApp buttons with generic message
+    const genericMsg = buildMessage({ motivo: "Consulta oftalmológica" });
+    const linkGeneric = waLink(genericMsg);
+
+    ["waTop","waMid","waBottom","waCta","waFab"].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.href = linkGeneric;
+    });
+
+    // Form -> WhatsApp
+    const form = document.getElementById("leadForm");
+    const ok = document.getElementById("successBox");
+    const err = document.getElementById("errorBox");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      ok.style.display = "none";
+      err.style.display = "none";
+
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+
+      if(!data.nombre || !data.motivo){
+        err.style.display = "block";
+        return;
+      }
+
+      const msg = buildMessage(data);
+      const url = waLink(msg);
+
+      ok.style.display = "block";
+      window.open(url, "_blank", "noopener");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+```
